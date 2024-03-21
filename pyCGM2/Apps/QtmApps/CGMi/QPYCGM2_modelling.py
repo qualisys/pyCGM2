@@ -57,9 +57,9 @@ def main(args=None):
 
 
 
-    checkEventsInMokka = bool(sessionXML.Subsession.Check_Events_In_Mokka.text)
-    createPDFReport = bool(sessionXML.Subsession.Create_PDF_report.text)
-    anomalyException = bool(sessionXML.Subsession.Anomaly_Exception.text)
+    # checkEventsInMokka = bool(sessionXML.Subsession.Check_Events_In_Mokka.text)
+    # createPDFReport = bool(sessionXML.Subsession.Create_PDF_report.text)
+    anomalyException = False # bool(sessionXML.Subsession.Anomaly_Exception.text)
 
     #---------------------------------------------------------------------------
     DATA_PATH = os.getcwd()+"\\"
