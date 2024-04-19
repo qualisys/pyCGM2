@@ -106,7 +106,8 @@ def main(args=None):
                    "LeftFootOff":[x / acq.GetPointFrequency() for x in lfo],
                    "RightFootStrike":[x / acq.GetPointFrequency() for x in rfs],
                    "RightFootOff":[x / acq.GetPointFrequency() for x in rfo]}
-
+            # also save to c3d
+            btkTools.smartWriter(acq, str(DATA_PATH + reconstructFilenameLabelled))
             files.saveJson( DATA_PATH, reconstructFilenameLabelled[:-4]+"-events.json", out)
             
             LOGGER.logger.warning (f"file [{filenameNoExt}]- Update your gait events in QTM and check them")     
