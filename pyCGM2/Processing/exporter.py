@@ -1117,14 +1117,14 @@ class XlsAnalysisExportFilter(object):
     def __advancedExport(self,outputName, path=None, excelFormat = "xls",csvFileExport =False):
         if path == None:
             if excelFormat == "xls":
-                xlsxWriter = pd.ExcelWriter((outputName + "- Advanced.xls"),engine='xlwt',encoding='utf-8')
+                xlsxWriter = pd.ExcelWriter((outputName + "- Advanced.xls"),engine='xlwt') # ,encoding='utf-8'
             elif excelFormat == "xlsx":
-                xlsxWriter = pd.ExcelWriter((outputName + "- Advanced.xlsx"),encoding='utf-8')
+                xlsxWriter = pd.ExcelWriter((outputName + "- Advanced.xlsx")) # ,encoding='utf-8'
         else:
             if excelFormat == "xls":
-                xlsxWriter = pd.ExcelWriter((path+outputName + "- Advanced.xls"),engine='xlwt',encoding='utf-8')
+                xlsxWriter = pd.ExcelWriter((path+outputName + "- Advanced.xls"),engine='xlwt') # ,encoding='utf-8'
             elif excelFormat == "xlsx":
-                xlsxWriter = pd.ExcelWriter((path+outputName + "- Advanced.xlsx"),encoding='utf-8')
+                xlsxWriter = pd.ExcelWriter((path+outputName + "- Advanced.xlsx")) # ,encoding='utf-8'
 
         # infos
         #-------
