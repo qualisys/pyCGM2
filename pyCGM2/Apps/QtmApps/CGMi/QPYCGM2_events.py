@@ -48,12 +48,7 @@ def main(args=None):
 
 
     sessionXML = files.readXml(DATA_PATH, sessionFilename)
-    sessionDate = files.getFileCreationDate(DATA_PATH+sessionFilename)
-
-    # checkEventsInMokka = bool(sessionXML.Subsession.Check_Events_In_Mokka.text)
-    # createPDFReport = bool(sessionXML.Subsession.Create_PDF_report.text)
-    # anomalyException = bool(sessionXML.Subsession.Anomaly_Exception.text)
-
+    
     dynamicMeasurements = qtmTools.findDynamic(sessionXML)
     for dynamicMeasurement in dynamicMeasurements:
         

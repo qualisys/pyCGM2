@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import warnings
-from pyCGM2.Tools import btkTools
-from pyCGM2 import enums
-from pyCGM2.QTM import qtmTools
-from pyCGM2.Utils import utils
-from pyCGM2.Utils import files
-from pyCGM2.Lib.CGM import cgm1, cgm1_1
-from pyCGM2.Lib.CGM import cgm2_1
-from pyCGM2.Lib.CGM.musculoskeletal import cgm2_2,cgm2_3 
-from pyCGM2.Lib.CGM import  cgm2_4, cgm2_5
-from pyCGM2.Lib.CGM import  kneeCalibration
-import shutil
-import os
-
 import argparse
+import os
+import shutil
+import warnings
+
 import pyCGM2
+from pyCGM2 import enums
+from pyCGM2.Lib.CGM import cgm1, cgm1_1, cgm2_1, cgm2_4, cgm2_5, kneeCalibration
+from pyCGM2.Lib.CGM.musculoskeletal import cgm2_2, cgm2_3
+from pyCGM2.QTM import qtmTools
+from pyCGM2.Tools import btkTools
+from pyCGM2.Utils import files, utils
+
 LOGGER = pyCGM2.LOGGER
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -48,17 +45,12 @@ def main(args=None):
     LOGGER.logger.info("------------QTM - pyCGM2 Modelling---------------")
 
     sessionXML = files.readXml(os.getcwd()+"\\", sessionFilename)
-    sessionDate = files.getFileCreationDate(os.getcwd()+"\\"+sessionFilename)
     CGM2_Model = sessionXML.Subsession.CGM2_Model.text
 
 
     LOGGER.logger.info(f"----> {CGM2_Model} <------")
     LOGGER.logger.info(f"--------------------------")
 
-
-
-    # checkEventsInMokka = bool(sessionXML.Subsession.Check_Events_In_Mokka.text)
-    # createPDFReport = bool(sessionXML.Subsession.Create_PDF_report.text)
     anomalyException = False # bool(sessionXML.Subsession.Anomaly_Exception.text)
 
     #---------------------------------------------------------------------------

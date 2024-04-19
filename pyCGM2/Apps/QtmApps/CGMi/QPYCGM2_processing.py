@@ -41,7 +41,6 @@ def main(args=None):
     LOGGER.logger.info("------------QTM - pyCGM2 CGM Processing---------------")
 
     sessionXML = files.readXml(os.getcwd()+"\\", sessionFilename)
-    sessionDate = files.getFileCreationDate(os.getcwd()+"\\"+sessionFilename)
     CGM2_Model = sessionXML.Subsession.CGM2_Model.text
 
 
@@ -49,16 +48,13 @@ def main(args=None):
     LOGGER.logger.info(f"--------------------------")
 
     # checkEventsInMokka = bool(sessionXML.Subsession.Check_Events_In_Mokka.text)
-    createPDFReport = False # bool(sessionXML.Subsession.Create_PDF_report.text)
+    createPDFReport = args.pdf_report # bool(sessionXML.Subsession.Create_PDF_report.text)
     # anomalyException = bool(sessionXML.Subsession.Anomaly_Exception.text)
 
 
     #---------------------------------------------------------------------------
     #management of the Processed foldercd
     DATA_PATH = os.getcwd()+"\\"
-
-    staticMeasurement = qtmTools.findStatic(sessionXML)
-    calibrateFilenameLabelled = qtmTools.getFilename(staticMeasurement)
 
     dynamicMeasurements = qtmTools.findDynamic(sessionXML)
     for dynamicMeasurement in dynamicMeasurements:
