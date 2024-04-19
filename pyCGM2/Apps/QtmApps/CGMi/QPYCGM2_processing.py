@@ -72,7 +72,7 @@ def main(args=None):
         rfs =  btkTools.smartGetEvents (acq,"Right Foot Strike","")
         rfo =  btkTools.smartGetEvents (acq,"Right Foot Off","")
 
-        acq.ClearEvents()
+        # acq.ClearEvents() # why clear????
 
         if lfs !=[]:
             for it in lfs:
