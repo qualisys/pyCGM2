@@ -1593,7 +1593,7 @@ class XlsAnalysisExportFilter(object):
 
         LOGGER.logger.info("advanced dataFrame [%s- Advanced] Exported"%outputName)
 
-        xlsxWriter.save()
+        # xlsxWriter.save() # does not exist anymore in the new version of "not sure which library"
 
 
 class AnalysisExportFilter(object):

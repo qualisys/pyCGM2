@@ -116,8 +116,9 @@ def main(args=None):
                 report.pdfGaitReport(
                     DATA_PATH, modelledTrials, nds, pointSuffix, title=type)
                 LOGGER.logger.info("Generation of Gait report complete")
-            except:
+            except Exception as e:
                 LOGGER.logger.error("Generation of Gait report failed")
+                LOGGER.logger.error(e)
 
     LOGGER.logger.info(
         "-------------------------------------------------------")
