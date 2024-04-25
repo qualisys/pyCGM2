@@ -65,12 +65,12 @@ except:
 
 
 
-#  [Optional]programData
-if (os.getenv("PROGRAMDATA") is not None) and \
-   os.path.isdir(os.getenv("PROGRAMDATA")+"\\pyCGM2"):
-    PYCGM2_APPDATA_PATH = os.getenv("PROGRAMDATA")+"\\pyCGM2\\"
-else:
-    PYCGM2_APPDATA_PATH = PYCGM2_SETTINGS_FOLDER
+# #  [Optional]programData
+# if (os.getenv("PROGRAMDATA") is not None) and \
+#    os.path.isdir(os.getenv("PROGRAMDATA")+"\\pyCGM2"):
+#     PYCGM2_APPDATA_PATH = os.getenv("PROGRAMDATA")+"\\pyCGM2\\"
+# else:
+PYCGM2_APPDATA_PATH = PYCGM2_SETTINGS_FOLDER
 
 
 
