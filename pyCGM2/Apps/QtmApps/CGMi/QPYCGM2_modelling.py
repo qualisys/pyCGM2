@@ -253,12 +253,13 @@ def main(args=None):
 
         LOGGER.logger.info("--------------------------Knee Calibration ----------------------------------")
 
-        if leftKneeFuncMeasurement is not None:
-            shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(leftKneeFuncMeasurement),
-                            DATA_PATH+qtmTools.getFilename(leftKneeFuncMeasurement))
-        if rightKneeFuncMeasurement is not None:
-            shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(rightKneeFuncMeasurement),
-                            DATA_PATH+qtmTools.getFilename(rightKneeFuncMeasurement))
+        if os.getcwd() + "\\" != DATA_PATH:
+            if leftKneeFuncMeasurement is not None:
+                shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(leftKneeFuncMeasurement),
+                                DATA_PATH+qtmTools.getFilename(leftKneeFuncMeasurement))
+            if rightKneeFuncMeasurement is not None:
+                shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(rightKneeFuncMeasurement),
+                                DATA_PATH+qtmTools.getFilename(rightKneeFuncMeasurement))
 
         if leftKneeFuncMeasurement is not None:
             reconstructFilenameLabelled = qtmTools.getFilename(leftKneeFuncMeasurement)
