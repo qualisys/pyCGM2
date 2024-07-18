@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import warnings
-from pyCGM2.Report import normativeDatasets
-from pyCGM2.Lib import eventDetector
-from pyCGM2.Lib import report
-from pyCGM2.Tools import btkTools
-from pyCGM2 import enums
-from pyCGM2.QTM import qtmTools
-from pyCGM2.Utils import utils
-from pyCGM2.Utils import files
-from pyCGM2.Lib.CGM import cgm1
-import shutil
-import os
-from pyCGM2.Anomaly import anomalyFilters
-from pyCGM2.Anomaly import anomalyDetectionProcedures
 import argparse
+import os
+import shutil
+import warnings
+
 import pyCGM2
+from pyCGM2 import enums
+from pyCGM2.Anomaly import anomalyDetectionProcedures, anomalyFilters
+from pyCGM2.Lib import eventDetector, report
+from pyCGM2.Lib.CGM import cgm1
+from pyCGM2.QTM import qtmTools
+from pyCGM2.Report import normativeDatasets
+from pyCGM2.Tools import btkTools
+from pyCGM2.Utils import files, utils
+
 LOGGER = pyCGM2.LOGGER
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
