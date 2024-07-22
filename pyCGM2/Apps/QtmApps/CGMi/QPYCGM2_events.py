@@ -21,7 +21,6 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 
-
 def main(args=None):
 
     LOGFILE = "pyCGM2-QTM-CGM2-Events.log"
@@ -39,6 +38,7 @@ def main(args=None):
     
 
     detectAnomaly = False
+    qtmFilesWithEvents = args.qtm_files_with_events if args.qtm_files_with_events else []
 
 
     LOGGER.logger.info("------------QTM - pyCGM2 EVENTS---------------")
@@ -53,6 +53,10 @@ def main(args=None):
         
         reconstructFilenameLabelled = qtmTools.getFilename(dynamicMeasurement)
         filenameNoExt = reconstructFilenameLabelled[:-4]
+
+        if filenameNoExt in qtmFilesWithEvents:
+            LOGGER.logger.info(f"Skipping {filenameNoExt} as it already has events")
+            continue
         
         LOGGER.logger.info(f"---File : {reconstructFilenameLabelled}----")
 
