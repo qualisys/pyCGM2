@@ -517,7 +517,7 @@ def main(args=None):
     else:
         LOGGER.logger.info("workflow return with no detected anomalies")
 
-    os.startfile( os.getcwd()+"\\"+ LOGFILE)
+    # os.startfile( os.getcwd()+"\\"+ LOGFILE)
 
 
 if __name__ == '__main__':

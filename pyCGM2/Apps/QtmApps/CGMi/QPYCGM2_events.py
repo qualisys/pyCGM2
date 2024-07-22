@@ -141,7 +141,7 @@ def main(args=None):
         
         LOGGER.logger.info("[QTM GAIT EVENT---> OK ]- Command *CGM2 processing* can be executed")
 
-    os.startfile( os.getcwd()+"\\"+LOGFILE)
+    # os.startfile( os.getcwd()+"\\"+LOGFILE)
 
 
             
