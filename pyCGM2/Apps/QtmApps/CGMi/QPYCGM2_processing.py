@@ -22,8 +22,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main(args=None):
 
-    LOGFILE = "pyCGM2-QTM-CGM2-Processing.log"
-    LOGGER.set_file_handler(LOGFILE)
+    
 
     if args is None:
         parser = argparse.ArgumentParser(description='QTM processing')
@@ -32,16 +31,19 @@ def main(args=None):
         args = parser.parse_args()
         sessionFilename = args.sessionFile
     else:
-        sessionFilename="session.xml"
+        sessionFilename = args.sessionFile
+        sessionFolder = args.session_path
     
     detectAnomaly = False
+    LOGFILE = sessionFolder /  "pyCGM2-QTM-CGM2-Processing.log"
+    LOGGER.set_file_handler(LOGFILE)
 
 
     LOGGER.logger.info("------------QTM - pyCGM2 CGM Processing---------------")
 
-    sessionXML = files.readXml(os.getcwd()+"\\", sessionFilename)
+    DATA_PATH = str(sessionFolder)+"\\"
+    sessionXML = files.readXml(DATA_PATH, sessionFilename)
     CGM2_Model = sessionXML.Subsession.CGM2_Model.text
-
 
     LOGGER.logger.info(f"----> {CGM2_Model} <------")
     LOGGER.logger.info(f"--------------------------")
@@ -52,8 +54,7 @@ def main(args=None):
 
 
     #---------------------------------------------------------------------------
-    #management of the Processed foldercd
-    DATA_PATH = os.getcwd()+"\\"
+    # management of the Processed folder
 
     dynamicMeasurements = qtmTools.findDynamic(sessionXML)
     for dynamicMeasurement in dynamicMeasurements:

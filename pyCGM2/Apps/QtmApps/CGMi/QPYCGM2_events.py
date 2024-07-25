@@ -23,9 +23,6 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main(args=None):
 
-    LOGFILE = "pyCGM2-QTM-CGM2-Events.log"
-    LOGGER.setLevel("info")
-    LOGGER.set_file_handler(LOGFILE)
 
     if args is None:
         parser = argparse.ArgumentParser(description='QEvents')
@@ -34,8 +31,12 @@ def main(args=None):
         args = parser.parse_args()
         sessionFilename = args.sessionFile
     else:
-        sessionFilename="session.xml"
+        sessionFilename = args.sessionFile
+        sessionFolder = args.session_path
     
+    LOGFILE = sessionFolder / "pyCGM2-QTM-CGM2-Events.log"
+    LOGGER.setLevel("info")
+    LOGGER.set_file_handler(LOGFILE)
 
     detectAnomaly = False
     qtmFilesWithEvents = args.qtm_files_with_events if args.qtm_files_with_events else []
@@ -43,7 +44,7 @@ def main(args=None):
 
     LOGGER.logger.info("------------QTM - pyCGM2 EVENTS---------------")
 
-    DATA_PATH = os.getcwd()+"\\"
+    DATA_PATH = str(sessionFolder) + "//"
 
 
     sessionXML = files.readXml(DATA_PATH, sessionFilename)

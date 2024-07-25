@@ -22,10 +22,6 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main(args=None):
 
-    LOGFILE = "pyCGM2-QTM-CGM2-Modelling.log"
-    LOGGER.set_file_handler(LOGFILE)
-
-
     if args is None:
         parser = argparse.ArgumentParser(description='QTM CGM Modelling')
         parser.add_argument('--sessionFile', type=str,
@@ -33,8 +29,12 @@ def main(args=None):
         args = parser.parse_args()
         sessionFilename = args.sessionFile
     else:
-        sessionFilename="session.xml"
+        sessionFilename = args.sessionFile
+        sessionFolder = args.session_path
     
+    LOGFILE = sessionFolder / "pyCGM2-QTM-CGM2-Modelling.log"
+    LOGGER.set_file_handler(LOGFILE)
+
     if args.debug:
         LOGGER.setLevel("debug")
 
@@ -44,17 +44,16 @@ def main(args=None):
 
     LOGGER.logger.info("------------QTM - pyCGM2 Modelling---------------")
 
-    sessionXML = files.readXml(os.getcwd()+"\\", sessionFilename)
+    
+    #---------------------------------------------------------------------------
+    DATA_PATH = str(sessionFolder)+"\\"
+    sessionXML = files.readXml(DATA_PATH, sessionFilename)
     CGM2_Model = sessionXML.Subsession.CGM2_Model.text
-
 
     LOGGER.logger.info(f"----> {CGM2_Model} <------")
     LOGGER.logger.info(f"--------------------------")
 
     anomalyException = False # bool(sessionXML.Subsession.Anomaly_Exception.text)
-
-    #---------------------------------------------------------------------------
-    DATA_PATH = os.getcwd()+"\\"
 
     staticMeasurement = qtmTools.findStatic(sessionXML)
     calibrateFilenameLabelled = qtmTools.getFilename(staticMeasurement)
