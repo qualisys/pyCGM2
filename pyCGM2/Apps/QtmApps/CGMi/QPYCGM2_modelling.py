@@ -49,6 +49,8 @@ def main(args=None):
     DATA_PATH = str(sessionFolder)+"\\"
     sessionXML = files.readXml(DATA_PATH, sessionFilename)
     CGM2_Model = sessionXML.Subsession.CGM2_Model.text
+    if "CGM2.6" in CGM2_Model:
+        CGM2_Model = "CGM2.6-Knee Calibration" # change name to the expected one here
 
     LOGGER.logger.info(f"----> {CGM2_Model} <------")
     LOGGER.logger.info(f"--------------------------")
@@ -252,13 +254,13 @@ def main(args=None):
 
         LOGGER.logger.info("--------------------------Knee Calibration ----------------------------------")
 
-        if os.getcwd() + "\\" != DATA_PATH:
-            if leftKneeFuncMeasurement is not None:
-                shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(leftKneeFuncMeasurement),
-                                DATA_PATH+qtmTools.getFilename(leftKneeFuncMeasurement))
-            if rightKneeFuncMeasurement is not None:
-                shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(rightKneeFuncMeasurement),
-                                DATA_PATH+qtmTools.getFilename(rightKneeFuncMeasurement))
+        # if os.getcwd() + "\\" != DATA_PATH: # since cwd and data path are not related anymore, this is obsolete
+        #     if leftKneeFuncMeasurement is not None:
+        #         shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(leftKneeFuncMeasurement),
+        #                         DATA_PATH+qtmTools.getFilename(leftKneeFuncMeasurement))
+        #     if rightKneeFuncMeasurement is not None:
+        #         shutil.copyfile(os.getcwd()+"\\"+qtmTools.getFilename(rightKneeFuncMeasurement),
+        #                         DATA_PATH+qtmTools.getFilename(rightKneeFuncMeasurement))
 
         if leftKneeFuncMeasurement is not None:
             reconstructFilenameLabelled = qtmTools.getFilename(leftKneeFuncMeasurement)
