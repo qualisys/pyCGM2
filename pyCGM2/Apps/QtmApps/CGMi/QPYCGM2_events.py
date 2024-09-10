@@ -39,7 +39,7 @@ def main(args=None):
     LOGGER.set_file_handler(LOGFILE)
 
     detectAnomaly = False
-    qtmFilesWithEvents = args.qtm_files_with_events if args.qtm_files_with_events else []
+    qtmFilesWithEvents = args.qtm_files_with_events
 
 
     LOGGER.logger.info("------------QTM - pyCGM2 EVENTS---------------")
