@@ -1236,37 +1236,37 @@ class CGM2_4(CGM2_3):
             self._anatomical_motion(aqui,"Pelvis",originLabel = str(dictAnat["Pelvis"]['labels'][3]))
 
         if "Left Thigh" in segments:
-            self._left_thigh_motion_optimize(aqui, dictRef,motionMethod)
+            self._thigh_motion_optimize("Left", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Left Thigh",originLabel = "LKJC")
 
 
         if "Right Thigh" in segments:
-            self._right_thigh_motion_optimize(aqui, dictRef,motionMethod)
+            self._thigh_motion_optimize("Right", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Right Thigh",originLabel = "RKJC")
 
 
         if "Left Shank" in segments:
-            self._left_shank_motion_optimize(aqui, dictRef,motionMethod)
+            self._shank_motion_optimize("Left", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Left Shank",originLabel = "LAJC")
 
         if "Right Shank" in segments:
-            self._right_shank_motion_optimize(aqui, dictRef,motionMethod)
+            self._shank_motion_optimize("Right", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Right Shank",originLabel = "RAJC")
 
         if "Left Foot" in segments:
-            self._left_foot_motion_optimize(aqui, dictRef,motionMethod)
+            self._foot_motion_optimize("Left", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Left Foot",originLabel = "LHEE")
 
         if "Right Foot" in segments:
-            self._right_foot_motion_optimize(aqui, dictRef,motionMethod)
+            self._foot_motion_optimize("Right", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Right Foot",originLabel = "RHEE")
 
         if "Left ForeFoot" in segments:
-            self._left_foot_motion_optimize(aqui, dictRef,motionMethod)
+            self._foot_motion_optimize("Left", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Left ForeFoot",originLabel = "LFJC")
 
         if "Right ForeFoot" in segments:
-            self._right_foot_motion_optimize(aqui, dictRef,motionMethod)
+            self._foot_motion_optimize("Right", aqui, dictRef,motionMethod)
             self._anatomical_motion(aqui,"Right ForeFoot",originLabel = "RFJC")
 
 
